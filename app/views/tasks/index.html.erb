@@ -1,0 +1,12 @@
+<h1>My tasks</h1>
+<ul style="list-style:none; padding-left: 0">
+  <% @tasks.each do |task| %>
+    <li><input type="checkbox" <% if task.completed%>
+      checked
+    <% end %>><%= link_to task.title, task_path(task) %> <%= link_to "delete task - 🗑️",
+    task_path(task),
+    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+    %></li>
+    <% end %>
+</ul>
+<%= link_to 'Add a new task', '/tasks/new' %>
